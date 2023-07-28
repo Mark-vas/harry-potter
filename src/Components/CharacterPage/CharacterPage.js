@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getCharacter } from "../../Store/CharacterSlice/CharacterSlice";
 import { useParams } from "react-router-dom";
+import Loader from "../utilities/Loader/Loader";
+import Error from "../utilities/Error/Error";
 
 const CharacterPage = () => {
   const { id } = useParams();
@@ -20,9 +22,8 @@ const CharacterPage = () => {
 
   return (
     <div>
-      {status && <p style={{ fontSize: "100px" }}>Loading...</p>}
-      {error && <p style={{ fontSize: "100px" }}>ERROR</p>}
-      {chracterInf.name}
+      {status && <Loader />}
+      {error ? <Error error={error} /> : <div>{chracterInf.name}</div>}
     </div>
   );
 };

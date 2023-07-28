@@ -4,7 +4,7 @@ import Characters from "./Components/Characters/Characters";
 import CharacterPage from "./Components/CharacterPage/CharacterPage";
 import Students from "./Components/HogwartsStudents/Students";
 import Teachers from "./Components/Teachers/Teachers";
-import Faculty from "./Components/Faculty/Faculty";
+import FacultyCharacters from "./Components/Faculty/Faculty";
 import Spells from "./Components/Spells/Spells";
 import Header from "./Components/Headers/Header";
 import Navbar from "./Components/NavBar/NavBar";
@@ -21,7 +21,7 @@ function App() {
             <Route path="/character/:id" Component={CharacterPage} />
             <Route path="/students" Component={Students} />
             <Route path="/teachers" Component={Teachers} />
-            <Route path="/faculty" Component={Faculty} />
+            <Route path="/faculty" Component={FacultyCharacters} />
             <Route path="/spells" Component={Spells} />
           </Routes>
         </div>

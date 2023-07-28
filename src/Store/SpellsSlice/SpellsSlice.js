@@ -1,40 +1,39 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getTeachers = createAsyncThunk(
-  "teachers/getTeachers",
+export const getSpells = createAsyncThunk(
+  "spells/getSpells",
   async (_, { dispatch, rejectWithValue }) => {
     const res = await axios
-      .get(`https://hp-api.onrender.com/api/characters/staff`)
+      .get(`https://hp-api.onrender.com/api/spells`)
       .then((res) => res.data)
       .catch((error) => rejectWithValue(error.message));
     return res;
   }
 );
 
-const TeachersSlice = createSlice({
-  name: "teachers",
+const SpellsSlice = createSlice({
+  name: "spells",
   initialState: {
-    teachers: [],
+    spells: [],
     error: null,
     status: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getTeachers.pending, (state) => {
+      .addCase(getSpells.pending, (state) => {
         state.status = true;
       })
-      .addCase(getTeachers.fulfilled, (state, action) => {
+      .addCase(getSpells.fulfilled, (state, action) => {
         state.status = false;
-        state.teachers = action.payload;
+        state.spells = action.payload;
       })
-      .addCase(getTeachers.rejected, (state, action) => {
+      .addCase(getSpells.rejected, (state, action) => {
         state.status = false;
         state.error = action.payload;
       });
   },
 });
 
-// export const {} = TeachersSlice.actions;
-export default TeachersSlice.reducer;
+export default SpellsSlice.reducer;

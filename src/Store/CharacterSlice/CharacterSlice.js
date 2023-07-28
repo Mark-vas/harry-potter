@@ -8,7 +8,7 @@ export const getCharacter = createAsyncThunk(
       .get(`https://hp-api.onrender.com/api/character/${id}`)
       .then((res) => res.data)
       .catch((error) => rejectWithValue(error.message));
-    return res;
+    return res[0];
   }
 );
 
@@ -28,7 +28,7 @@ const CharacterSlice = createSlice({
       })
       .addCase(getCharacter.fulfilled, (state, action) => {
         state.status = false;
-        state.character = action.payload[0];
+        state.character = action.payload;
       })
       .addCase(getCharacter.rejected, (state, action) => {
         state.status = false;
@@ -37,5 +37,5 @@ const CharacterSlice = createSlice({
   },
 });
 
-export const {} = CharacterSlice.actions;
+// export const {} = CharacterSlice.actions;
 export default CharacterSlice.reducer;

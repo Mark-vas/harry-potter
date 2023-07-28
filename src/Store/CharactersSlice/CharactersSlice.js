@@ -16,8 +16,14 @@ const CharactersSlice = createSlice({
   name: "characters",
   initialState: {
     characters: [],
+    selectedBlood: "all",
     error: null,
     status: null,
+  },
+  reducers: {
+    setSelectedBlood: (state, action) => {
+      state.selectedBlood = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -34,6 +40,6 @@ const CharactersSlice = createSlice({
       });
   },
 });
-// {} Перечислить все редьюсеры
-// export const {} = CharactersSlice.actions;
+
+export const { setSelectedBlood } = CharactersSlice.actions;
 export default CharactersSlice.reducer;
